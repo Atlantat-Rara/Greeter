@@ -14,10 +14,18 @@ configure_file(cmake/greeter_config.h.in greeter_config.h)
 add_subdirectory(src/greeter)
 
 # Executables
-# Options, to change with: cmake
-#-DGREETER_BUILD_APPS=OFF…
+# Options, to change with: cmake -DGREETER_BUILD_APPS=OFF
 option(GREETER_BUILD_APPS "Compile apps" ON)
 if(GREETER_BUILD_APPS)
  message(STATUS "Configuring Greeter with executables")
  add_subdirectory(apps)
+endif()
+
+# Tests
+# Options, to change with: cmake -DGREETER_BUILD_TESTS=OFF
+option(GREETER_BUILD_TESTS "Compile tests" ON)
+if(GREETER_BUILD_TESTS)
+ message(STATUS "Configuring Greeter with tests")
+ enable_testing()
+ add_subdirectory(tests)
 endif()
