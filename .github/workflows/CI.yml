@@ -1,9 +1,13 @@
-# ETAPE 1 : la CI la plus simple possible
-# A chaque push, GitHub loue une machine Ubuntu, recupere le code,
-# puis execute les memes commandes que vous tapez dans votre terminal.
+# ETAPE 2 : travailler avec des Pull Requests
+# Nouveau : la CI se lance aussi sur chaque Pull Request.
+# On ne lance plus la CI sur tous les push, seulement sur master
+# (les autres branches sont testees via leur Pull Request).
 name: CI
 
-on: push
+on:
+  push:
+    branches: [master]   # NOUVEAU
+  pull_request:          # NOUVEAU
 
 jobs:
   # ==========================================================================
